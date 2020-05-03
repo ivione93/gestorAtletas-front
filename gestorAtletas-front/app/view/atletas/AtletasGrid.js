@@ -44,7 +44,9 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
     bbar: [
     	{ xtype: 'button', text: 'Eliminar', handler: 'eliminarAtleta', disabled: true, bind: {disabled: '{!selectedItem}'} },
     	{ xtype: 'button', text: 'Modificar', handler: 'abrirDetalleAtleta', disabled: true, bind: {disabled: '{!selectedItem}'} },
-    	{ xtype: 'button', text: 'Añadir', handler: 'abrirNuevoAtleta' }
+    	{ xtype: 'button', text: 'Añadir', handler: 'abrirNuevoAtleta' },
+    	'->',
+    	{ xtype: 'button', text: 'Añadir resultado', handler: 'abrirNuevoResultado', disabled: true, bind: {disabled: '{!selectedItem}'} }
     ],
     
     plugins: {

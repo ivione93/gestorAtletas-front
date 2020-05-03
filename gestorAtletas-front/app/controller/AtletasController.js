@@ -200,6 +200,54 @@ Ext.define('gestorAtletas.controller.AtletasController', {
     	} else if (edicionAtl == 'Nuevo') {
     		Ext.getCmp('nuevoAtleta').close();
     	}
-    }
+    },
     
+    abrirNuevoResultado: function() {
+    	var atletaSel = Ext.getCmp('atletasGrid').selection.data;
+    	var detalle = Ext.create('Ext.window.Window', {
+    		id: 'nuevoResultado',
+    		controller: 'atletasController',
+    		edicionAtl: 'Nuevo',
+    		title: atletaSel.nombre + ' ' + atletaSel.apellidos,
+    		height: 200,
+    		width: 600,
+    		items: {
+    			xtype: 'atletasResultados'
+    		}
+    	}).show();
+    },
+    
+    guardarResultado: function() {
+    	var atletaSel = Ext.getCmp('atletasGrid').selection.data;
+    	var idAtleta = atletaSel.idAtleta;
+    	var form = Ext.getCmp('atletasResultados').getForm();
+    	if (form.isValid()) {
+    		var competicionAtletaResultado = Ext.getCmp('competicionAtletaResultado').getValue();
+        	var pruebaAtletaResultado = Ext.getCmp('pruebaAtletaResultado').getValue();
+        	var marcaAtletaResultado = Ext.getCmp('marcaAtletaResultado').getValue();
+        	
+        	var store = Ext.create('gestorAtletas.store.NuevoResultadoStore');
+        	var model = Ext.create('gestorAtletas.model.NuevoResultadoModel', {
+        		idCompeticion: competicionAtletaResultado,
+        		idAtleta: idAtleta,
+        		idPrueba: pruebaAtletaResultado,
+        		marca: marcaAtletaResultado,
+        		puntos: 0
+        	});
+        	store.add(model);
+        	store.sync({
+        		success: function() {
+        			Ext.Msg.alert('Aviso','Operación realizada correctamente');
+        		}, 
+        		failure: function() {
+        			Ext.Msg.alert('Error','Se produjo un error');
+        		}
+        	});
+    	}
+    	Ext.getCmp('nuevoResultado').close();
+    },
+    
+    cancelarResultado: function() {
+    	Ext.getCmp('nuevoResultado').close();
+    }
 });
