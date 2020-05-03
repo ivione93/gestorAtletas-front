@@ -6,7 +6,7 @@ Ext.define('gestorAtletas.store.NuevoAtletaStore', {
 
     proxy: {
         type: 'rest',
-        url: Config.server + 'atletas/new',
+        url: Config.server + 'atletas',
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         writer: {type: 'json'}

@@ -147,7 +147,7 @@ Ext.define('gestorAtletas.controller.AtletasController', {
         	
         	if(edicionAtl == 'Editar'){
         		var idAtleta = grid.selection.data.idAtleta;
-        		var store = Ext.create('gestorAtletas.store.EditarAtletaStore');
+        		var store = Ext.create('gestorAtletas.store.NuevoAtletaStore');
             	var model = Ext.create('gestorAtletas.model.AtletasModel', {
             		idAtleta: idAtleta,
             		nombre: nombreAtl,
