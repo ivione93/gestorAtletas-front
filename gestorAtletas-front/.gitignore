@@ -1,0 +1,9 @@
+/build
+bootstrap.*
+classic.json*
+modern.json*
+.sencha
+/sencha-error-20200416-1.log
+/sencha-error-20200416-2.log
+/sencha-error-20200416.log
+/sencha-error-20200424.log
