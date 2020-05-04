@@ -30,6 +30,7 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
     },
 
     columns: [
+    	{ text: 'ID',  dataIndex: 'idAtleta', flex: 0.2 },
         { text: 'Nombre',  dataIndex: 'nombre', flex: 1 },
         { text: 'Apellidos', dataIndex: 'apellidos', flex: 1  },
         { text: 'F. Nacimiento', dataIndex: 'fechaNacimiento', flex: 1 },

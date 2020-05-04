@@ -23,6 +23,7 @@ Ext.define('gestorAtletas.view.competiciones.CompeticionesGrid', {
     },
     
     columns: [
+    	{ text: 'ID',  dataIndex: 'idCompeticion', flex: 0.2 },
     	{ text: 'Competición',  dataIndex: 'nCompeticion', flex: 2 },
     	{ text: 'Lugar', dataIndex: 'lugar', flex: 1 },
     	{ text: 'Fecha', dataIndex: 'fecha', flex: 1 }
