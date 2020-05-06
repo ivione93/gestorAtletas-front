@@ -31,12 +31,6 @@ Ext.define('gestorAtletas.controller.RankingController', {
     }
 });
 
-function comprobarFiltros(a,b,c,d,e) {
-	var todosRellenos = false;
-	
-	return todosRellenos;
-};
-
 function buscarResultadosPrueba() {
 	var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
 	var gridStore = Ext.getCmp('rankingGrid').getStore();
