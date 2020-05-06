@@ -91,27 +91,10 @@ Ext.define('gestorAtletas.view.ranking.RankingSearch', {
     	}, {
     		xtype: 'grid',
     		id: 'pruebaStoreGrid',
+    		hidden: true,
     		store: {
     	        type: 'pruebaStore',
-    	        autoLoad: false,
-    	        listeners: {
-    	        	/*afterload: function() {
-    	        		var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
-    	            	var rankingGrid = Ext.getCmp('rankingGrid');
-    	            	var gridStore = Ext.getCmp('rankingGrid').getStore();
-    	            	if(pruebaStoreGrid.data.length > 0){
-    	            		var idPrueba = pruebaStoreGrid.data.items[0].data.idPrueba;
-    	                	gridStore.getProxy().initConfig();
-    	                	gridStore.getProxy().setUrl(Config.server + 'resultados/prueba/' + idPrueba);
-    	                	gridStore.getProxy().setExtraParams({});
-    	                	gridStore.load();
-    	                	rankingGrid.setVisible(true);
-    	            	} else {
-    	            		alert("No se han encontrado resultados");
-    	            	}
-    	        	}*/
-    	        	afterload: 'buscarResultadosPrueba'
-    	        }
+    	        autoLoad: false
     	    },
     		columns: [
     			{ text: 'Prueba', dataIndex: 'idPrueba', flex: 1 },
@@ -120,7 +103,7 @@ Ext.define('gestorAtletas.view.ranking.RankingSearch', {
     			{ text: 'idCategoria', dataIndex: 'idCategoria', flex: 1 },
     			{ text: 'idSector', dataIndex: 'idSector', flex: 1 },
     			{ text: 'idEspecialidad', dataIndex: 'idEspecialidad', flex: 1 },
-    		]
+    		], 
     	}
     ],
     bbar: [

@@ -16,7 +16,6 @@ Ext.define('gestorAtletas.controller.RankingController', {
     				+ '/categoria/' + categoriaRanking + '/ambito/' + ambitoRanking + '/sector/' + sectorRanking
     				+ '/especialidad/' + especialidadRanking);
     	}
-    	alert(pruebaStoreGrid.getProxy().getUrl());
     	pruebaStoreGrid.load();
     	buscarResultadosPrueba();
     },
@@ -31,7 +30,6 @@ Ext.define('gestorAtletas.controller.RankingController', {
 });
 
 function buscarResultadosPrueba() {
-	alert('buscarResultadosPrueba');
 	var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
 	var gridStore = Ext.getCmp('rankingGrid').getStore();
 	var rankingGrid = Ext.getCmp('rankingGrid');
@@ -43,6 +41,7 @@ function buscarResultadosPrueba() {
     	gridStore.load();
     	rankingGrid.setVisible(true);
 	} else {
-		alert("No se han encontrado resultados");
+		alert("Vuelve a darle a buscar");
+		rankingGrid.setVisible(false);
 	}
 };
