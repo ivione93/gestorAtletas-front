@@ -4,43 +4,21 @@ Ext.define('gestorAtletas.controller.RankingController', {
     alias: 'controller.rankingController',
     
     buscar: function() {
-    	var rankingGrid = Ext.getCmp('rankingGrid');
+    	var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
     	var gridStore = Ext.getCmp('rankingGrid').getStore();
-		var idPrueba = calcularPrueba();
-    	gridStore.getProxy().initConfig();
-    	gridStore.getProxy().setUrl(Config.server + 'resultados/prueba/' + idPrueba);
-    	gridStore.getProxy().setExtraParams({});
-    	gridStore.load();
-    	rankingGrid.setVisible(true);
-    },
-    
-    buscar1: function() {
-    	var rankingGrid = Ext.getCmp('rankingGrid');
-    	var gridStore = Ext.getCmp('rankingGrid').getStore();
-    	var pruebaStore = Ext.create('gestorAtletas.store.PruebaStore');
-    	//obtenerFiltros();
     	var ambitoRanking = Ext.getCmp('ambitoRanking').getValue();
     	var sectorRanking = Ext.getCmp('sectorRanking').getValue();
     	var especialidadRanking = Ext.getCmp('especialidadRanking').getValue();
     	var categoriaRanking = Ext.getCmp('categoriaRanking').getValue();
     	var sexoRanking = Ext.getCmp('sexoRanking').getValue();
     	if(ambitoRanking != null && sectorRanking != null && especialidadRanking != null && categoriaRanking != null && sexoRanking != null) {
-    		pruebaStore.getProxy().setUrl(Config.server + 'pruebas/sexo/' + sexoRanking 
+    		pruebaStoreGrid.getProxy().setUrl(Config.server + 'pruebas/sexo/' + sexoRanking 
     				+ '/categoria/' + categoriaRanking + '/ambito/' + ambitoRanking + '/sector/' + sectorRanking
     				+ '/especialidad/' + especialidadRanking);
     	}
-    	alert(pruebaStore.getProxy().getUrl());
-    	pruebaStore.load();
-    	if(pruebaStore.data.length > 0){
-    		var idPrueba = pruebaStore.data.items[0].data.idPrueba;
-        	gridStore.getProxy().initConfig();
-        	gridStore.getProxy().setUrl(Config.server + 'resultados/prueba/' + idPrueba);
-        	gridStore.getProxy().setExtraParams({});
-        	gridStore.load();
-        	rankingGrid.setVisible(true);
-    	} else {
-    		alert("No se han encontrado resultados");
-    	}
+    	alert(pruebaStoreGrid.getProxy().getUrl());
+    	pruebaStoreGrid.load();
+    	buscarResultadosPrueba();
     },
 
     limpiar: function() {
@@ -52,36 +30,19 @@ Ext.define('gestorAtletas.controller.RankingController', {
     }
 });
 
-function obtenerFiltros() {
-	var ambitoRanking = Ext.getCmp('ambitoRanking').getValue();
-	var sectorRanking = Ext.getCmp('sectorRanking').getValue();
-	var especialidadRanking = Ext.getCmp('especialidadRanking').getValue();
-	var categoriaRanking = Ext.getCmp('categoriaRanking').getValue();
-	var sexoRanking = Ext.getCmp('sexoRanking').getValue();
-	alert(ambitoRanking + ' ' + sectorRanking + ' ' +
-			especialidadRanking + ' ' + categoriaRanking + ' ' + sexoRanking);
-};
-
-function calcularPrueba() {
-	var idPrueba = 0;
-	var pruebaStore = Ext.create('gestorAtletas.store.PruebaStore');
-	var ambitoRanking = Ext.getCmp('ambitoRanking').getValue();
-	var sectorRanking = Ext.getCmp('sectorRanking').getValue();
-	var especialidadRanking = Ext.getCmp('especialidadRanking').getValue();
-	var categoriaRanking = Ext.getCmp('categoriaRanking').getValue();
-	var sexoRanking = Ext.getCmp('sexoRanking').getValue();
-	if(ambitoRanking != null && sectorRanking != null && especialidadRanking != null && categoriaRanking != null && sexoRanking != null) {
-		pruebaStore.getProxy().setUrl(Config.server + 'pruebas/sexo/' + sexoRanking 
-				+ '/categoria/' + categoriaRanking + '/ambito/' + ambitoRanking + '/sector/' + sectorRanking
-				+ '/especialidad/' + especialidadRanking);
-	}
-	pruebaStore.fetch();
-	pruebaStore.load();
-	if(pruebaStore.data.length > 0){
-		idPrueba = pruebaStore.data.items[0].data.idPrueba;
+function buscarResultadosPrueba() {
+	alert('buscarResultadosPrueba');
+	var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
+	var gridStore = Ext.getCmp('rankingGrid').getStore();
+	var rankingGrid = Ext.getCmp('rankingGrid');
+	if(pruebaStoreGrid.data.length > 0){
+		var idPrueba = pruebaStoreGrid.data.items[0].data.idPrueba;
+    	gridStore.getProxy().initConfig();
+    	gridStore.getProxy().setUrl(Config.server + 'resultados/prueba/' + idPrueba);
+    	gridStore.getProxy().setExtraParams({});
+    	gridStore.load();
+    	rankingGrid.setVisible(true);
 	} else {
-		idPrueba = -1;
+		alert("No se han encontrado resultados");
 	}
-	alert(idPrueba);
-	return idPrueba;
 };

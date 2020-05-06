@@ -5,11 +5,12 @@ Ext.define('gestorAtletas.store.PruebaStore', {
     model: 'gestorAtletas.model.PruebaModel',
     
     autoSync: true,
+    autoLoad: true,
     
     proxy: {
         type: 'rest',
         method: 'GET',
-        url: Config.server + 'pruebas',
+        url: Config.server + 'pruebas/',
         reader: {
             type: 'json',
             rootProperty: ''
