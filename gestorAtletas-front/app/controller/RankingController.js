@@ -15,9 +15,11 @@ Ext.define('gestorAtletas.controller.RankingController', {
     		pruebaStoreGrid.getProxy().setUrl(Config.server + 'pruebas/sexo/' + sexoRanking 
     				+ '/categoria/' + categoriaRanking + '/ambito/' + ambitoRanking + '/sector/' + sectorRanking
     				+ '/especialidad/' + especialidadRanking);
+    		pruebaStoreGrid.load();
+        	buscarResultadosPrueba();
+    	} else {
+    		alert('Tienes que completar todos los filtros');
     	}
-    	pruebaStoreGrid.load();
-    	buscarResultadosPrueba();
     },
 
     limpiar: function() {
@@ -28,6 +30,12 @@ Ext.define('gestorAtletas.controller.RankingController', {
     	Ext.getCmp('sexoRanking').setValue('');
     }
 });
+
+function comprobarFiltros(a,b,c,d,e) {
+	var todosRellenos = false;
+	
+	return todosRellenos;
+};
 
 function buscarResultadosPrueba() {
 	var pruebaStoreGrid = Ext.getCmp('pruebaStoreGrid').getStore();
