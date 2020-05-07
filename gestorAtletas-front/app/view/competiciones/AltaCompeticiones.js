@@ -37,8 +37,6 @@ Ext.define('gestorAtletas.view.competiciones.AltaCompeticiones', {
 	        name: 'lugar',
 	        id: 'lugar',
 	        allowBlank: false,
-	    }, {
-	    	html: 'Posibles pruebas'
 	    }
 	],
 

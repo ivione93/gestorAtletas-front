@@ -9,7 +9,7 @@ Ext.define('gestorAtletas.store.CompeticionesStore', {
     proxy: {
         type: 'rest',
         method: 'GET',
-        url: Config.server + 'competiciones',
+        url: Config.server + 'competiciones/',
         reader: {
             type: 'json',
             rootProperty: ''

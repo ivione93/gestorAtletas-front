@@ -20,12 +20,7 @@ Ext.define('gestorAtletas.view.ranking.RankingGrid', {
     ],
     
     listeners: {
-    	celldblclick: function(a, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-    		var idAtleta = tr.data.idAleta;
-    		var idPrueba = tr.prueba.idPrueba;
-    		var idCompeticion = tr.data.idCompeticion;a
-    		alert(cellIndex);
-    	}
+    	celldblclick: 'abrirDetalleResultado' 
     }
     
 });

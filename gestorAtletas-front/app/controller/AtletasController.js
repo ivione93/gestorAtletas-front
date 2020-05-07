@@ -48,30 +48,35 @@ Ext.define('gestorAtletas.controller.AtletasController', {
     
     abrirDetalleAtleta: function() {
     	var atletaSel = Ext.getCmp('atletasGrid').selection.data;
-    	var detalle = Ext.create('Ext.window.Window', {
-    		title: atletaSel.nombre + ' ' + atletaSel.apellidos,
-    		id: 'editarAtleta',
-    		controller: 'atletasController',
-    		height: 500,
-    		width: 500,
-    		items: {
-    			xtype: 'atletasInfo',
-    			edicionAtl: 'Editar'
-    		},
-    		listeners: {
-    	    	beforeshow: function () {
-    	    		Ext.getCmp('categoriaAtl').setValue(atletaSel.idCategoria);
-    	    		Ext.getCmp('sexoAtl').setValue(atletaSel.idSexo);
-    	    		Ext.getCmp('nombreAtl').setValue(atletaSel.nombre);
-    	    		Ext.getCmp('apellidosAtl').setValue(atletaSel.apellidos);
-    	    		Ext.getCmp('fechaNacimientoAtl').setValue(atletaSel.fechaNacimiento);
-    	    		Ext.getCmp('ciudadAtl').setValue(atletaSel.ciudad);
-    	    		Ext.getCmp('licenciaAtl').setValue(atletaSel.licencia);
-    	    		Ext.getCmp('telefonoAtl').setValue(atletaSel.telefono);
-    	    		Ext.getCmp('emailAtl').setValue(atletaSel.email);
-    	    	}
-    	    },
-    	}).show();
+    	var selection = Ext.getCmp('atletasGrid').selModel.selected.items.length;
+    	if(selection > 1) {
+    		Ext.Msg.alert('Error', 'Seleccione solo un atleta');
+    	} else {
+	    	var detalle = Ext.create('Ext.window.Window', {
+	    		title: atletaSel.nombre + ' ' + atletaSel.apellidos,
+	    		id: 'editarAtleta',
+	    		controller: 'atletasController',
+	    		height: 500,
+	    		width: 500,
+	    		items: {
+	    			xtype: 'atletasInfo',
+	    			edicionAtl: 'Editar'
+	    		},
+	    		listeners: {
+	    	    	beforeshow: function () {
+	    	    		Ext.getCmp('categoriaAtl').setValue(atletaSel.idCategoria);
+	    	    		Ext.getCmp('sexoAtl').setValue(atletaSel.idSexo);
+	    	    		Ext.getCmp('nombreAtl').setValue(atletaSel.nombre);
+	    	    		Ext.getCmp('apellidosAtl').setValue(atletaSel.apellidos);
+	    	    		Ext.getCmp('fechaNacimientoAtl').setValue(atletaSel.fechaNacimiento);
+	    	    		Ext.getCmp('ciudadAtl').setValue(atletaSel.ciudad);
+	    	    		Ext.getCmp('licenciaAtl').setValue(atletaSel.licencia);
+	    	    		Ext.getCmp('telefonoAtl').setValue(atletaSel.telefono);
+	    	    		Ext.getCmp('emailAtl').setValue(atletaSel.email);
+	    	    	}
+	    	    },
+	    	}).show();
+    	}
     },
     
     abrirNuevoAtleta: function() {
@@ -91,33 +96,37 @@ Ext.define('gestorAtletas.controller.AtletasController', {
     
     eliminarAtleta: function(btn) {
     	var grid = Ext.getCmp('atletasGrid');
-    	var atleta = grid.selection.data.idAtleta;
-    	Ext.MessageBox.show({
-            title: 'Eliminar atleta',
-            msg: 'Se va a proceder a eliminar al atleta seleccionado. <br />¿Desea continuar?',
-            buttons: Ext.MessageBox.YESNO,
-            icon: Ext.MessageBox.QUESTION,
-            fn: function(btn){
-            	var request = null;
-            	if(btn == 'yes'){
-            		request = {
-            			url: 'localhost:9595/atletas/delete/' + atleta,
-            			method: 'delete',
-            			header: {'Content-Type': null},
-            			success: function(response){
-            				Ext.Msg.alert('Eliminado');
-            				grid.store.reload();
-            			},
-            			failure: function(response){
-            				Ext.Msg.alert('No eliminado a BBDD');
-            			}
-            		};
-            		Ext.Ajax.request(request);
-            		grid.store.remove(grid.selModel.selected.items);
-            	}
-            }
-    		
-        });
+    	var selection = grid.selModel.selected.items.length;
+    	if(selection > 1) {
+    		Ext.Msg.alert('Seleccione solo un atleta');
+    	} else {
+    		var atleta = grid.selection.data.idAtleta;
+        	Ext.MessageBox.show({
+                title: 'Eliminar atleta',
+                msg: 'Se va a proceder a eliminar al atleta seleccionado. <br />¿Desea continuar?',
+                buttons: Ext.MessageBox.YESNO,
+                icon: Ext.MessageBox.QUESTION,
+                fn: function(btn){
+                	var request = null;
+                	if(btn == 'yes'){
+                		request = {
+                			url: 'localhost:9595/atletas/delete/' + atleta,
+                			method: 'delete',
+                			header: {'Content-Type': null},
+                			success: function(response){
+                				Ext.Msg.alert('Eliminado');
+                				grid.store.reload();
+                			},
+                			failure: function(response){
+                				Ext.Msg.alert('No eliminado a BBDD');
+                			}
+                		};
+                		Ext.Ajax.request(request);
+                		grid.store.remove(grid.selModel.selected.items);
+                	}
+                }
+            });
+    	}
     },
     
     cancelar: function() {

@@ -35,11 +35,7 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
         { text: 'Apellidos', dataIndex: 'apellidos', flex: 1  },
         { text: 'F. Nacimiento', dataIndex: 'fechaNacimiento', flex: 1 },
         { text: 'Ciudad', dataIndex: 'ciudad', flex: 1 },
-        { text: 'Categoría', dataIndex: 'idCategoria', flex: 1,
-	        renderer: function(value, meta, record) {
-	        	return record.data.idCategoria;
-			}
-        }
+        { text: 'Categoría', dataIndex: 'idCategoria', flex: 1 }
     ],
     
     bbar: [
