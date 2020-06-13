@@ -17,7 +17,7 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
 
     store: {
         type: 'atletasStore',
-        autoLoad: true
+        autoLoad: {start: 0, limit: 4}
     },
     
     selModel: {
@@ -45,6 +45,11 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
     	'->',
     	{ xtype: 'button', text: 'Añadir resultado', handler: 'abrirNuevoResultado', disabled: true, bind: {disabled: '{!selectedItem}'} }
     ],
+    
+    dockedItems: [{
+    	xtype: 'pagingtoolbar',
+    	dock: 'bottom'
+    }],
     
     plugins: {
         rowexpander: {

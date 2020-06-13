@@ -12,5 +12,6 @@ Ext.define('gestorAtletas.store.AtletasStore', {
             type: 'json',
             rootProperty: ''
         }
-    }
+    },
+    pageSize: 4
 });
