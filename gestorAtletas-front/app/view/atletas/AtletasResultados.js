@@ -34,21 +34,21 @@ Ext.define('gestorAtletas.view.atletas.AtletasResultados', {
         items: [{
         	flex: 1,
             xtype: 'textfield',
-            fieldLabel: 'Competición',
+            fieldLabel: 'Competición (id)',
             name: 'competicionAtletaResultado',
             id: 'competicionAtletaResultado',
             allowBlank: false
         }, {
         	flex: 1,
             xtype: 'textfield',
-            fieldLabel: 'Prueba',
+            fieldLabel: 'Prueba (id)',
             name: 'pruebaAtletaResultado',
             id: 'pruebaAtletaResultado',
             allowBlank: false
         }, {
         	flex: 1,
             xtype: 'textfield',
-            fieldLabel: 'Marca',
+            fieldLabel: 'Marca (mm:ss.ms)',
             name: 'marcaAtletaResultado',
             id: 'marcaAtletaResultado',
             allowBlank: false
