@@ -37,7 +37,31 @@ Ext.define('gestorAtletas.view.atletas.AtletasGrid', {
         { text: 'Apellidos', dataIndex: 'apellidos', flex: 1  },
         { text: 'F. Nacimiento', dataIndex: 'fechaNacimiento', flex: 1 },
         { text: 'Ciudad', dataIndex: 'ciudad', flex: 1 },
-        { text: 'Categoría', dataIndex: 'idCategoria', flex: 1 }
+        { text: 'Categoría', dataIndex: 'idCategoria', flex: 1, 
+        	renderer: function(value, meta, record) {
+        		switch (record.data.idCategoria) {
+					case 1:
+						value = 'Máster'
+						break;
+					case 9:
+						value = 'Absoluto'
+						break;
+					default:
+						break;
+				}
+        		return value;
+        	} 
+        },        	
+        { text: 'Sexo', dataIndex: 'idSexo', flex: 0.3,
+        	renderer: function(value, meta, record) {
+        		if(record.data.idSexo == 1) {
+        			value = 'M';
+        		} else {
+        			value = 'F';
+        		}
+        		return value;
+        	} 
+        }
     ],
     
     bbar: [

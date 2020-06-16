@@ -6,7 +6,6 @@ Ext.define('gestorAtletas.view.atletas.AtletasView', {
     	'gestorAtletas.view.atletas.AtletasSearch',
     	'gestorAtletas.view.atletas.AtletasGrid'
     ],
-    scrollable: 'y',
     
     items:[
     	{
