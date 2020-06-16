@@ -28,7 +28,7 @@ Ext.define('gestorAtletas.view.atletas.AtletasSearch', {
     				valueField: 'idCategoria',
     				queryMode: 'local',
     				width: '18%',
-    				emptyText: 'Seleccione categoría',
+    				emptyText: 'Categoría',
     				store: {
     			        type: 'categoriaStore',
     			        autoLoad: true
@@ -53,7 +53,7 @@ Ext.define('gestorAtletas.view.atletas.AtletasSearch', {
     				valueField: 'idSexo',
     				queryMode: 'local',
     				width: '18%',
-    				emptyText: 'Seleccione sexo',
+    				emptyText: 'Sexo',
     				store: {
     			        type: 'sexoStore',
     			        autoLoad: true

@@ -5,6 +5,8 @@ Ext.define('gestorAtletas.view.ranking.RankingGrid', {
     
     title: 'Ranking',
     border: true,
+    width: 1356,
+    height: 400,
     
     store: {
         type: 'rankingStore',

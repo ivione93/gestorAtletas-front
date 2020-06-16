@@ -12,6 +12,8 @@ Ext.define('gestorAtletas.view.competiciones.CompeticionesGrid', {
     
     title: 'Competiciones',
     border: true,
+    width: 1356,
+    height: 400,
     
     store: {
         type: 'competicionesStore',
