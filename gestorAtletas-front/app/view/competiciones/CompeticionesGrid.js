@@ -32,7 +32,7 @@ Ext.define('gestorAtletas.view.competiciones.CompeticionesGrid', {
     ],
     
     bbar: [
-    	{ xtype: 'button', text: 'Eliminar', handler: 'eliminarCompeticion', disabled: true, bind: {disabled: '{!selectedItem}'}},
+    	//{ xtype: 'button', text: 'Eliminar', handler: 'eliminarCompeticion', disabled: true, bind: {disabled: '{!selectedItem}'}},
     	{ xtype: 'button', text: 'Añadir', handler: 'crearCompeticion' }
     ],
 });
